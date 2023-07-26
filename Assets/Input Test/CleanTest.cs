@@ -3,7 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 
-public class Clean : MonoBehaviour
+public class CleanTest : MonoBehaviour
 {
     [Header("Cleaning")]
     [SerializeField] private Camera _camera;
@@ -11,31 +11,21 @@ public class Clean : MonoBehaviour
     [SerializeField] private Texture2D _brush;
     [SerializeField] private float brushSizeMultiplier = 2;
     [SerializeField] private Material _material;
-    [Space(2)]
-    [SerializeField] private float dirtThreshold = 60;
-
-    [Space(2)]
-    [SerializeField] private TextMeshProUGUI dirtText;
-    [SerializeField] private CameraController cameraController;
 
     private Texture2D _templateDirtMask;
     private float dirtAmountTotal;
     private float dirtAmount;
-    private int remeaningDirt;
     private Vector2Int lastPaintPixelPosition;
-    private DirtFading dirtFading;
 
-    Vector2 inputPosition;
+
+    Vector2 cubePosition;
 
     private void Start()
     {
         CreateTexture();
         SetBrushSize();
-
-        dirtFading = GetComponent<DirtFading>();
         // Get the Renderer component attached to the GameObject
         Renderer renderer = GetComponent<Renderer>();
-
         dirtAmountTotal = 0f;
         for (int x = 0; x < _templateDirtMask.width; x++)
         {
@@ -80,35 +70,20 @@ public class Clean : MonoBehaviour
     private void Update()
     {
 
-        if (!GameManager.instance.inMenu)
-        {
-            Debug.Log("Inside ");
-            Cleaning();
-            remeaningDirt = Mathf.RoundToInt(GetDirtAmount() * 100f);
-            dirtText.text = remeaningDirt + "%";
+        Cleaning();
 
-            if (remeaningDirt <= dirtThreshold)
-            {
-                Debug.Log("Dirst mask should be fading");
-                // Call the StartLerping function
-                if (dirtFading != null)
-                {
-                    dirtFading.StartLerping();
-                }
-            }
-        }
     }
 
     private void Cleaning()
     {
-        // Perform a raycast from the mouse/touch position
-        Ray ray = _camera.ScreenPointToRay(inputPosition);
-
-        //Debug.Log("Input position: " + inputPosition);
+        // Perform a raycast from the cube's position to hit the surface
+        Ray ray = new Ray(gameObject.transform.position, transform.forward);
 
         bool isHit = Physics.Raycast(ray, out RaycastHit raycastHit);
+
         if (isHit)
         {
+            // Get the UV coordinates of the hit point on the surface
             Vector2 textureCoord = raycastHit.textureCoord;
 
             int pixelX = (int)(textureCoord.x * _templateDirtMask.width);
@@ -164,12 +139,8 @@ public class Clean : MonoBehaviour
             }
             _templateDirtMask.Apply();
         }
-    }
 
-    private void OnSelect(InputValue value)
-    {
-        inputPosition = value.Get<Vector2>();
-        //Debug.Log("Onselect : " + inputPosition);
+
     }
 
     private void CreateTexture()
@@ -178,10 +149,5 @@ public class Clean : MonoBehaviour
         _templateDirtMask.SetPixels(_dirtMaskBase.GetPixels());
         _templateDirtMask.Apply();
         _material.SetTexture("_DirtMask", _templateDirtMask);
-    }
-
-    private float GetDirtAmount()
-    {
-        return this.dirtAmount / dirtAmountTotal;
     }
 }

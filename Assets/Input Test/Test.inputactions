@@ -1,125 +1,14 @@
 {
-    "name": "Deep Clean",
+    "name": "Test",
     "maps": [
         {
-            "name": "Level 1",
-            "id": "388de124-e6e7-455a-affc-7aef68ea4645",
-            "actions": [
-                {
-                    "name": "Select",
-                    "type": "Value",
-                    "id": "81c61f33-172a-4ed6-a103-4e9926764508",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "346711ab-2f28-4465-9fc3-f2a9f3ef6267",
-                    "path": "<Touchscreen>/touch0/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Touch",
-                    "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Mouse Left Click",
-                    "id": "34e3ca4d-554f-4b0c-8f3b-93f7c8352bb4",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "317d4ce1-4433-4424-8290-2059888ba75f",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "d1ac4c42-8cf2-4891-9962-9b97c36e0743",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                }
-            ]
-        },
-        {
-            "name": "Level 2",
-            "id": "b3a2f7e6-6076-4ab4-9664-aa0a4d3ea862",
-            "actions": [
-                {
-                    "name": "Hold",
-                    "type": "Button",
-                    "id": "de66b2aa-4015-4285-92d4-63f19373262e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "7506ab1f-2731-4412-936e-89b788f7ab6a",
-                    "path": "<Touchscreen>/Press",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Touch",
-                    "action": "Hold",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Mouse Left Click",
-                    "id": "d881dfca-b8c3-4989-b0a2-f8b445c62c3d",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Hold",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "f9b5b617-1769-463b-8f9d-26d860d4bd5d",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Hold",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                }
-            ]
-        },
-        {
-            "name": "Level 3",
-            "id": "661c94ab-d479-406c-8b2d-dafdca6a3c18",
+            "name": "Player",
+            "id": "7644619c-a8e1-4274-9e0e-f577d459311e",
             "actions": [
                 {
                     "name": "Move",
                     "type": "Value",
-                    "id": "5c8e1dd7-145c-4321-9003-df94d5b0470c",
+                    "id": "3df89790-9b12-4806-ba9c-e9de099743e3",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -129,11 +18,11 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "1a14b851-8982-47e6-9d4a-bc17a4953439",
+                    "id": "978bfe49-cc26-4a3d-ab7b-7d7a29327403",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": ";Gamepad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -141,74 +30,13 @@
             ]
         },
         {
-            "name": "Camera",
-            "id": "bf81cf09-6da2-4fb6-a222-0e0b195d9def",
-            "actions": [
-                {
-                    "name": "SelectCamera",
-                    "type": "Value",
-                    "id": "0f7a7b10-3d10-4efd-a441-b4f21986489d",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "Mouse Left Click",
-                    "id": "d56b546e-d9c5-43e5-882e-13e5e76c934b",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SelectCamera",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "489855d7-3e8d-4fc9-956c-7a28e0a10f23",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "SelectCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "cb65e72d-f810-4059-8415-29f4a41e75bf",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "SelectCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "4faad43e-dfde-4196-91b5-fd2dc05623f6",
-                    "path": "<Touchscreen>/touch1/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Touch",
-                    "action": "SelectCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
             "name": "UI",
-            "id": "53280e63-1cdc-4734-b186-9f75d3c67073",
+            "id": "d142a6fa-1989-4534-9ba3-6a2a7038875a",
             "actions": [
                 {
                     "name": "Navigate",
                     "type": "PassThrough",
-                    "id": "24fa125f-816d-4d06-bcf0-ef16b0bf2877",
+                    "id": "93cf9c1e-1a07-432f-94f8-c918e6991955",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -217,7 +45,7 @@
                 {
                     "name": "Submit",
                     "type": "Button",
-                    "id": "a6fec7d0-1474-4801-a299-01bb44333006",
+                    "id": "634e91a1-073c-42b8-aa46-d0a6cd92f1b4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -226,7 +54,7 @@
                 {
                     "name": "Cancel",
                     "type": "Button",
-                    "id": "357871c4-d991-4c13-a805-c0a3e2ccd004",
+                    "id": "9185faef-ba42-4185-935a-cf6ed0861542",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -235,7 +63,7 @@
                 {
                     "name": "Point",
                     "type": "PassThrough",
-                    "id": "2bf96ee3-4aac-44a0-95cc-ef9ae2a83dd9",
+                    "id": "3a35dfe6-1287-4782-be07-f45920da67fc",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -244,7 +72,7 @@
                 {
                     "name": "Click",
                     "type": "PassThrough",
-                    "id": "1bcd245b-2589-4bc4-b48a-dd830a57b86c",
+                    "id": "a02de1d5-ef53-40b6-80d9-380f256adb46",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -253,7 +81,7 @@
                 {
                     "name": "ScrollWheel",
                     "type": "PassThrough",
-                    "id": "e6329005-eb66-4991-a5ea-ad84984bffab",
+                    "id": "c247b7a3-70d9-4cc6-b456-694d45d97747",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -262,7 +90,7 @@
                 {
                     "name": "MiddleClick",
                     "type": "PassThrough",
-                    "id": "4c48e108-4128-4711-9e7b-d61be994928a",
+                    "id": "b8cbc4c8-00b9-4f37-827c-23e1bd1ff7df",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -271,7 +99,7 @@
                 {
                     "name": "RightClick",
                     "type": "PassThrough",
-                    "id": "c40a1672-52f6-4061-bf38-c0b5016fe55a",
+                    "id": "f28962cf-994a-4170-b8d7-a9fb556c3119",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -280,7 +108,7 @@
                 {
                     "name": "TrackedDevicePosition",
                     "type": "PassThrough",
-                    "id": "760c3d58-a6b6-42c4-a086-7e71a845f354",
+                    "id": "77ff254d-7923-4575-9519-0f95745ba0cc",
                     "expectedControlType": "Vector3",
                     "processors": "",
                     "interactions": "",
@@ -289,7 +117,7 @@
                 {
                     "name": "TrackedDeviceOrientation",
                     "type": "PassThrough",
-                    "id": "3a8c8463-1c59-4b46-87ec-218dc8c6ebe4",
+                    "id": "069cd8be-88c2-4144-9ee1-2559a30f5ce6",
                     "expectedControlType": "Quaternion",
                     "processors": "",
                     "interactions": "",

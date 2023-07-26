@@ -8,13 +8,17 @@ public class PushObjectsAway : MonoBehaviour
     [SerializeField] float pushForce = 10f;
     [SerializeField] float rotationForce = 5f;
 
-    private Rigidbody[] surroundingRigidbodies;
+    //private Rigidbody[] surroundingRigidbodies;
+    private List<Rigidbody> surroundingRigidbodies = new List<Rigidbody>();
+
     bool canApplyForce = false;
 
     private void Start()
     {
-        surroundingRigidbodies = GetComponentsInChildren<Rigidbody>();
-        Debug.Log(surroundingRigidbodies.Length);
+        //surroundingRigidbodies = GetComponentsInChildren<Rigidbody>();
+        // Get all Rigidbody components in the children of the GameObject and add them to the list
+        surroundingRigidbodies.AddRange(GetComponentsInChildren<Rigidbody>());
+        Debug.Log(surroundingRigidbodies.Count);
     }
 
     private void FixedUpdate()
@@ -42,8 +46,24 @@ public class PushObjectsAway : MonoBehaviour
         }
     }
 
-    private void OnPress(InputValue value)
+    public void OnHold(InputAction.CallbackContext context)
     {
-        canApplyForce = value.isPressed;
+        if (context.performed)
+        {
+            canApplyForce = true;
+        }
+        if (context.canceled)
+        {
+            canApplyForce = false;
+        }
+        Debug.Log("Phases: " + context.phase);
+    }
+
+    public void RemoveFromSurroundingRb(Rigidbody rbToRemove)
+    {
+        // Remove the object from the list
+        surroundingRigidbodies.Remove(rbToRemove);
+        // Destroy the cube object when it exits the area and removed from the list.
+        Destroy(rbToRemove.gameObject);
     }
 }
