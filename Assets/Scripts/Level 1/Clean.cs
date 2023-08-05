@@ -94,6 +94,8 @@ public class Clean : MonoBehaviour
                 if (dirtFading != null)
                 {
                     dirtFading.StartLerping();
+                    // Win Condition
+                    Debug.Log("Level 1 Completed");
                 }
             }
         }
@@ -103,8 +105,6 @@ public class Clean : MonoBehaviour
     {
         // Perform a raycast from the mouse/touch position
         Ray ray = _camera.ScreenPointToRay(inputPosition);
-
-        //Debug.Log("Input position: " + inputPosition);
 
         bool isHit = Physics.Raycast(ray, out RaycastHit raycastHit);
         if (isHit)

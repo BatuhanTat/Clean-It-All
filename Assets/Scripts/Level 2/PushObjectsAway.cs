@@ -6,19 +6,22 @@ using UnityEngine.InputSystem;
 public class PushObjectsAway : MonoBehaviour
 {
     [SerializeField] float pushForce = 10f;
-    [SerializeField] float rotationForce = 5f;
+    [SerializeField] RotatePropeller propeller; 
 
     //private Rigidbody[] surroundingRigidbodies;
     private List<Rigidbody> surroundingRigidbodies = new List<Rigidbody>();
 
     bool canApplyForce = false;
+    int totalObject_Count;
+    int pushedObject_Count = 0;
 
     private void Start()
     {
         //surroundingRigidbodies = GetComponentsInChildren<Rigidbody>();
         // Get all Rigidbody components in the children of the GameObject and add them to the list
         surroundingRigidbodies.AddRange(GetComponentsInChildren<Rigidbody>());
-        Debug.Log(surroundingRigidbodies.Count);
+        totalObject_Count = surroundingRigidbodies.Count;
+        Debug.Log(surroundingRigidbodies.Count + " Totel object count " + totalObject_Count);
     }
 
     private void FixedUpdate()
@@ -26,6 +29,8 @@ public class PushObjectsAway : MonoBehaviour
         if (canApplyForce)
         {
             ApplyForce();
+            //Rotate Propeller
+            propeller.Rotate();
             Debug.Log("Update deyiz");
         }
     }
@@ -36,13 +41,15 @@ public class PushObjectsAway : MonoBehaviour
         foreach (Rigidbody rb in surroundingRigidbodies)
         {
             Vector3 centerToSurrounding = rb.transform.position - transform.position;
+            centerToSurrounding.y = 0f; // Ignore Y component
             rb.AddForce(centerToSurrounding.normalized * pushForce, ForceMode.Force);
 
-            // Calculate rotation direction based on object's position relative to the center object
-            Vector3 rotationDirection = Quaternion.Euler(0f, 90f, 0f) * centerToSurrounding.normalized;
+            // Rotation
+            /*  // Calculate rotation direction based on object's position relative to the center object
+                Vector3 rotationDirection = Quaternion.Euler(0f, 90f, 0f) * centerToSurrounding.normalized;
 
-            // Apply torque force to rotate the object
-            rb.AddTorque(rotationDirection * rotationForce, ForceMode.Force);
+                // Apply torque force to rotate the object
+                rb.AddTorque(rotationDirection * rotationForce, ForceMode.Force); */
         }
     }
 
@@ -56,7 +63,7 @@ public class PushObjectsAway : MonoBehaviour
         {
             canApplyForce = false;
         }
-        Debug.Log("Phases: " + context.phase);
+        //Debug.Log("Phases: " + context.phase);
     }
 
     public void RemoveFromSurroundingRb(Rigidbody rbToRemove)
@@ -65,5 +72,11 @@ public class PushObjectsAway : MonoBehaviour
         surroundingRigidbodies.Remove(rbToRemove);
         // Destroy the cube object when it exits the area and removed from the list.
         Destroy(rbToRemove.gameObject);
+        pushedObject_Count++;
+        // When "pushedObject_Count >= totalObject_Count" win condition.
+        if (pushedObject_Count >= totalObject_Count)
+        {
+            Debug.Log("Level 2 Completed");
+        }
     }
 }
