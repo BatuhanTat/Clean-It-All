@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class CleanTest : MonoBehaviour
 {
     [Header("Cleaning")]
-    [SerializeField] private Camera _camera;
     [SerializeField] private Texture2D _dirtMaskBase;
     [SerializeField] private Texture2D _brush;
     [SerializeField] private float brushSizeMultiplier = 2;
@@ -77,7 +76,7 @@ public class CleanTest : MonoBehaviour
     private void Cleaning()
     {
         // Perform a raycast from the cube's position to hit the surface
-        Ray ray = new Ray(gameObject.transform.position, transform.forward);
+        Ray ray = new Ray(gameObject.transform.position, -transform.up);
 
         bool isHit = Physics.Raycast(ray, out RaycastHit raycastHit);
 

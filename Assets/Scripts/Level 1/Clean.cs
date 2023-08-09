@@ -16,7 +16,6 @@ public class Clean : MonoBehaviour
 
     [Space(2)]
     [SerializeField] private TextMeshProUGUI dirtText;
-    [SerializeField] private CameraController cameraController;
 
     private Texture2D _templateDirtMask;
     private float dirtAmountTotal;
@@ -95,7 +94,7 @@ public class Clean : MonoBehaviour
                 {
                     dirtFading.StartLerping();
                     // Win Condition
-                    Debug.Log("Level 1 Completed");
+                    Debug.Log("Level Completed");
                 }
             }
         }

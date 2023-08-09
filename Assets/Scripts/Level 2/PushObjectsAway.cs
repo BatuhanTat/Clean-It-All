@@ -76,7 +76,7 @@ public class PushObjectsAway : MonoBehaviour
         // When "pushedObject_Count >= totalObject_Count" win condition.
         if (pushedObject_Count >= totalObject_Count)
         {
-            Debug.Log("Level 2 Completed");
+            Debug.Log("Level Completed");
         }
     }
 }
