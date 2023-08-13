@@ -12,14 +12,16 @@ public class JoystickMover : MonoBehaviour
     [Space]
     [SerializeField] float max_Z;
     [SerializeField] float min_Z;
-    //[SerializeField] bool vertical_Y = true;
+    [Tooltip("Vertical means blue axis will point down, green axis will point right, red axis will point back.")]
+    [SerializeField] bool isVertical = false;
     [SerializeField] bool isRotate = false;
 
     [SerializeField] float rotationSpeed = 5f;
 
     PlayerInput playerInput;
     Transform cubeTransform;
-    Vector2 inputVector;
+    //Vector2 inputVector;
+    public Vector2 inputVector { get; private set; }
 
     Vector3 targetPosition;
     Rigidbody rb;
@@ -29,7 +31,7 @@ public class JoystickMover : MonoBehaviour
         cubeTransform = GetComponent<Transform>();
         //playerInput = GetComponent<PlayerInput>();
         targetPosition = cubeTransform.position;
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();    
     }
 
     //private void Update()
@@ -78,10 +80,19 @@ public class JoystickMover : MonoBehaviour
             newPosition.x = Mathf.Clamp(newPosition.x, min_X, max_X);
             newPosition.z = Mathf.Clamp(newPosition.z, min_Z, max_Z);
 
+            Quaternion targetRotation = Quaternion.Euler(0f, 0f, 0f);
+
+            if (isVertical)
+            {
+                targetRotation = Quaternion.Euler(90f, 90f, 0f);
+            }
+          
+
             if (isRotate)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(movement);
-                rb.MoveRotation(targetRotation);
+                Quaternion finalRotation  = Quaternion.LookRotation(movement) * targetRotation;
+                rb.MoveRotation(finalRotation );
+
             }
             rb.MovePosition(newPosition);
         }
