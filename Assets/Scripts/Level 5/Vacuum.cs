@@ -19,7 +19,7 @@ public class Vacuum : MonoBehaviour
     {
         string objectName = other.gameObject.name; // Get the name of the exited object
 
-        if (objectName.StartsWith("Dirt"))
+        if (objectName.StartsWith("Candy"))
         {
             DirtMover dirt = other.gameObject.GetComponent<DirtMover>();
             if (dirt != null)
@@ -40,6 +40,4 @@ public class Vacuum : MonoBehaviour
         }
     }
 
-
- 
 }
