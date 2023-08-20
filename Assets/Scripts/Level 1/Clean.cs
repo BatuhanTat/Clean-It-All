@@ -100,7 +100,7 @@ public class Clean : MonoBehaviour
 
                     if(!hasIncrementedLevel)
                     {
-                        GameManager.instance.IncrementLevelProgress();
+                        GameManager.instance.CompleteLevel();
                         hasIncrementedLevel = true; 
                     }
                     

@@ -82,7 +82,7 @@ public class PushObjectsAway : MonoBehaviour
 
             if (!hasIncrementedLevel)
             {
-                GameManager.instance.IncrementLevelProgress();
+                GameManager.instance.CompleteLevel();
                 hasIncrementedLevel = true;
             }
         }

@@ -36,10 +36,9 @@ public class AreaTrigger : MonoBehaviour
             {
                 if (!hasIncrementedLevel)
                 {
-                    GameManager.instance.IncrementLevelProgress();
+                    GameManager.instance.CompleteLevel();
                     hasIncrementedLevel = true;
                 }
-                GameManager.instance.IncrementLevelProgress();
             }
             else
             {

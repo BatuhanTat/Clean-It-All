@@ -37,7 +37,7 @@ public class Vacuum : MonoBehaviour
         if (dirtList.Count <= 0)
         {
             Debug.Log("Level completed.");
-            GameManager.instance.IncrementLevelProgress();
+            GameManager.instance.CompleteLevel();
         }
     }
 

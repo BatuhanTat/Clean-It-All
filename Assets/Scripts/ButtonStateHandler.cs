@@ -9,10 +9,6 @@ public class ButtonStateHandler : MonoBehaviour
 
     [SerializeField] float alphaReductionPercentage = 0.5f;
 
-    private void Start()
-    {
-        GameManager.instance.levelCount = buttonList.Count;
-    }
 
     public void SetLevelButtons(int levelProgress)
     {

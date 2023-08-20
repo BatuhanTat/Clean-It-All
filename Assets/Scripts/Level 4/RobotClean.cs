@@ -22,7 +22,7 @@ public class RobotClean : MonoBehaviour
         if (thrashList.Count <= 0)
         {
             Debug.Log("Level completed.");
-            GameManager.instance.IncrementLevelProgress();
+            GameManager.instance.CompleteLevel();
         }
     }
 }

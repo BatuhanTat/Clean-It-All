@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,25 +9,10 @@ public class GameManager : MonoBehaviour
     public bool canClean { get; set; } = false;
     public bool inMenu { get; set; } = false;
 
-    [HideInInspector] public int levelCount = 0;
-    private int levelProgress = 0;
+    private int unlockedLevels; // Initially, only the first level is unlocked
 
-    // Method to increment levelProgress by 1
-    public void IncrementLevelProgress()
-    {
-        int currentSceneNumber = 0;
-        int.TryParse(SceneManager.GetActiveScene().name, out currentSceneNumber);
-
-        Debug.Log("Level count: " + levelCount);
-        Debug.Log("Level progression before: " + levelProgress);
-        //levelProgress = (levelProgress < levelCount) ? levelProgress + 1 : levelProgress;
-       
-        if(levelProgress < levelCount && PlayerPrefs.GetInt("Level") < currentSceneNumber )
-       
-        SetLevelProgression();
-        Debug.Log("Level progression after: " + levelProgress);
-        Debug.Log("Level progression playerPref after: " + PlayerPrefs.GetInt("Level"));
-    }
+    float levelLoadDelay = 1f;
+    int levelCount = 0;
 
     private void Awake()
     {
@@ -41,28 +27,77 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
-        SetLevelProgression();
-        //levelProgress = PlayerPrefs.GetInt("Level");
-        Debug.Log("levelProgress prefs " + PlayerPrefs.GetInt("Level"));
+        levelCount = SceneManager.sceneCountInBuildSettings;
+        Debug.Log("Total number of scenes: " + levelCount);
+
+        unlockedLevels = PlayerPrefs.GetInt("UnlockedLevels", 0); // Load the unlockedLevels value from PlayerPrefs
     }
 
 
-    private void SetLevelProgression()
+    public void CompleteLevel()
     {
-        if (PlayerPrefs.HasKey("Level"))
+        int levelIndex = SceneManager.GetActiveScene().buildIndex;
+
+        Debug.Log("Level Index " + levelIndex);
+        if (levelIndex == unlockedLevels)
         {
-            int oldLevel = PlayerPrefs.GetInt("Level");
-            if (levelProgress > oldLevel)
+            Debug.Log("Level Index " + levelIndex + "  unlockedLevels: " + unlockedLevels);
+            if (levelIndex == 0 || IsPreviousLevelCompleted(levelIndex))
             {
-                PlayerPrefs.SetInt("Level", levelProgress);
-                PlayerPrefs.Save();
+                Debug.Log("unlockedLevels " + unlockedLevels);
+                unlockedLevels++;
+                Debug.Log("unlockedLevels " + unlockedLevels);
+                PlayerPrefs.SetInt("UnlockedLevels", unlockedLevels);
+
+                PlayerPrefs.SetInt("Level_" + levelIndex, 1);
+                PlayerPrefs.Save(); // Optional: Manually save PlayerPrefs
+                
             }
         }
-        else
+        LoadNextlevel(levelIndex);
+    }
+    public void LoadLevel(string sceneName)
+    {
+        if (!string.IsNullOrEmpty(sceneName))
         {
-            PlayerPrefs.SetInt("Level", levelProgress);
-            PlayerPrefs.Save();
+            //Invoke(nameof(LoadDelayedScene), levelLoadDelay);
+            StartCoroutine(LoadingDelay(sceneName));
         }
     }
 
+    private void LoadNextlevel(int levelIndex)
+    {
+        if(levelIndex + 1  <=  PlayerPrefs.GetInt("UnlockedLevels") && levelIndex + 1 < levelCount)
+        {
+            StartCoroutine(LoadingDelay(levelIndex + 1));
+        }     
+    }
+
+    private IEnumerator LoadingDelay(object arg)
+    {
+        yield return new WaitForSeconds(levelLoadDelay);
+
+        if(arg is string)
+        {
+            SceneManager.LoadScene((string)arg);
+        }
+        else if(arg is int)
+        {
+            SceneManager.LoadScene((int)arg);
+        }
+    }
+
+    
+
+    private bool IsPreviousLevelCompleted(int levelIndex)
+    {
+        if (levelIndex == 0) // First level has no previous level
+        {
+            return true;
+        }
+
+        return PlayerPrefs.GetInt("Level_" + (levelIndex - 1), 0) == 1;
+    }
+
+  
 }
