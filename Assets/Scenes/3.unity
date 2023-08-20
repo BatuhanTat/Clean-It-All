@@ -43347,6 +43347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelPanel: {fileID: 188649654}
+  buttonStateHandler: {fileID: 0}
 --- !u!1 &1322822868
 GameObject:
   m_ObjectHideFlags: 0
@@ -47562,6 +47563,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670154258272409370, guid: 1c32f2c1e815f2145b1a54eccc360caf,
+        type: 3}
+      propertyPath: m_text
+      value: Level 3
       objectReference: {fileID: 0}
     - target: {fileID: 3670154259226931529, guid: 1c32f2c1e815f2145b1a54eccc360caf,
         type: 3}

@@ -8034,7 +8034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelPanel: {fileID: 188649654}
-  levelLoadDelay: 0.2
+  buttonStateHandler: {fileID: 0}
 --- !u!1 &1322822868
 GameObject:
   m_ObjectHideFlags: 0
@@ -9397,6 +9397,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3670154258272409370, guid: 1c32f2c1e815f2145b1a54eccc360caf,
+        type: 3}
+      propertyPath: m_text
+      value: Level 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3670154259226931529, guid: 1c32f2c1e815f2145b1a54eccc360caf,
         type: 3}
       propertyPath: m_Name

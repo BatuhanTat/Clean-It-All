@@ -6,10 +6,7 @@ using UnityEngine.UI;
 public class ButtonStateHandler : MonoBehaviour
 {
     [SerializeField] List<Button> buttonList;
-
-    [SerializeField] float alphaReductionPercentage = 0.5f;
-
-
+    
     public void SetLevelButtons(int levelProgress)
     {
         CheckScore(levelProgress);
@@ -23,11 +20,11 @@ public class ButtonStateHandler : MonoBehaviour
         {
             if(i <= levelProgress)
             {
-                buttonList[i].enabled = true;
+                buttonList[i].interactable = true;
             }
             else
             {
-                buttonList[i].enabled = false;
+                buttonList[i].interactable = false;
             }
         }
     }
@@ -36,22 +33,24 @@ public class ButtonStateHandler : MonoBehaviour
     {
         foreach (Button button in buttonList)
         {
+            Transform parent = button.gameObject.transform;
+            Image mostInnerImage = parent.GetChild(0).GetChild(0).GetComponent<Image>();
             if (!button.interactable)
-            {
-                foreach (Graphic childObject in button.GetComponentsInChildren<Graphic>())
+            {               
+                Debug.Log("Button child count: " + parent.childCount);
+               
+                if (mostInnerImage != null)
                 {
-                    Color childColor = childObject.color;
-                    childColor.a *= (1 - alphaReductionPercentage);
-                    childObject.color = childColor;
+                    Debug.Log("mostInnerImage " + mostInnerImage);                
+                    mostInnerImage.enabled = false;
                 }
+
             }
             else
-            {
-                foreach (Graphic childObject in button.GetComponentsInChildren<Graphic>())
-                {
-                    Color childColor = childObject.color;
-                    childColor.a = 1;
-                    childObject.color = childColor;
+            {                             
+                if (mostInnerImage != null)
+                {                    
+                    mostInnerImage.enabled = true;
                 }
             }
         }
