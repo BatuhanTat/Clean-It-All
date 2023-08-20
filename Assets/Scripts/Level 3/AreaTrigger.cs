@@ -8,6 +8,9 @@ public class AreaTrigger : MonoBehaviour
 
     private List<Rigidbody> sandBalls = new List<Rigidbody>();
 
+
+    private bool hasIncrementedLevel = false;
+
     private void Start()
     {
         Rigidbody[] allRigidbodies = parentObject.GetComponentsInChildren<Rigidbody>();
@@ -31,7 +34,12 @@ public class AreaTrigger : MonoBehaviour
         {
             if (sandBalls.Count <= 1)
             {
-                Debug.Log("Level completed.");
+                if (!hasIncrementedLevel)
+                {
+                    GameManager.instance.IncrementLevelProgress();
+                    hasIncrementedLevel = true;
+                }
+                GameManager.instance.IncrementLevelProgress();
             }
             else
             {

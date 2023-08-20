@@ -48,6 +48,7 @@ public class HairCleaner : MonoBehaviour
         if (hairList.Count <= 0)
         {
             Debug.Log("Level completed.");
+            GameManager.instance.IncrementLevelProgress();
         }
     }
 }

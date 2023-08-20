@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject levelPanel;
+    [SerializeField] ButtonStateHandler buttonStateHandler;
 
 
     float levelLoadDelay = 1f;
@@ -15,12 +16,13 @@ public class UIManager : MonoBehaviour
     public void LevelPanel()
     {
         levelPanel.SetActive(!levelPanel.activeSelf);
+        buttonStateHandler.SetLevelButtons(PlayerPrefs.GetInt("Level"));
         GameManager.instance.inMenu = levelPanel.activeSelf;
     }
 
     public void SettingsPanel()
     {
-        Debug.Log("Setttings worked");
+        Debug.Log("Settings worked");
     }
 
     public void SelectLevel(Button button)

@@ -26,6 +26,8 @@ public class Clean : MonoBehaviour
 
     Vector2 inputPosition;
 
+    private bool hasIncrementedLevel = false;
+
     private void Start()
     {
         CreateTexture();
@@ -95,6 +97,13 @@ public class Clean : MonoBehaviour
                     dirtFading.StartLerping();
                     // Win Condition
                     Debug.Log("Level Completed");
+
+                    if(!hasIncrementedLevel)
+                    {
+                        GameManager.instance.IncrementLevelProgress();
+                        hasIncrementedLevel = true; 
+                    }
+                    
                 }
             }
         }

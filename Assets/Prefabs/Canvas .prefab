@@ -1200,6 +1200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelPanel: {fileID: 3670154258102450018}
+  buttonStateHandler: {fileID: 7835466287009274938}
 --- !u!1 &3670154259241061120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,6 +1559,7 @@ GameObject:
   - component: {fileID: 8197221581228032397}
   - component: {fileID: 3141289808103146793}
   - component: {fileID: 6873830325682992048}
+  - component: {fileID: 7835466287009274938}
   m_Layer: 5
   m_Name: Levels
   m_TagString: Untagged
@@ -1667,6 +1669,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
+--- !u!114 &7835466287009274938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6186882863211851166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89547e1823d37bb41afcab41546a11d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonList:
+  - {fileID: 3670154257584563375}
+  - {fileID: 3330265387081367125}
+  - {fileID: 4504192592021580955}
+  - {fileID: 5681663752232773426}
+  - {fileID: 7879292309209469010}
+  - {fileID: 4621292186164671597}
+  alphaReductionPercentage: 0.5
 --- !u!1001 &2786944653313732492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2190,12 +2212,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.UI.Button, UnityEngine.UI
       objectReference: {fileID: 0}
+    - target: {fileID: 1769364421837728129, guid: af4b04cb9dc13ae4282824e4800ba555,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1773206338174340613, guid: af4b04cb9dc13ae4282824e4800ba555,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2b2a7409367238d49a6bc873e0bef473,
         type: 3}
+    - target: {fileID: 1773206338174340613, guid: af4b04cb9dc13ae4282824e4800ba555,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4b04cb9dc13ae4282824e4800ba555, type: 3}
 --- !u!224 &3330265387081367124 stripped
