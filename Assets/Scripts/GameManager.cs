@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
     private void Start()
     {
@@ -55,6 +56,17 @@ public class GameManager : MonoBehaviour
             }
         }
         LoadNextlevel(levelIndex);
+        UIManager.instance.PlayLevelCompleteParticles();
+        UIManager.instance.ToggleIngameUI(false);
+        UIManager.instance.ToggleLevelCompleteText(true);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        UIManager.instance.UpdateRenderCamera();
+        UIManager.instance.UpdateLevelTexts(SceneManager.GetActiveScene().buildIndex + 1);
+        UIManager.instance.ToggleIngameUI(true);
+        UIManager.instance.ToggleLevelCompleteText(false);
     }
     public void LoadLevel(string sceneName)
     {
@@ -63,14 +75,6 @@ public class GameManager : MonoBehaviour
             //Invoke(nameof(LoadDelayedScene), levelLoadDelay);
             StartCoroutine(LoadingDelay(sceneName));
         }
-    }
-
-    private void LoadNextlevel(int levelIndex)
-    {
-        if(levelIndex + 1  <=  PlayerPrefs.GetInt("UnlockedLevels") && levelIndex + 1 < levelCount)
-        {
-            StartCoroutine(LoadingDelay(levelIndex + 1));
-        }     
     }
 
     private IEnumerator LoadingDelay(object arg)
@@ -87,7 +91,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    private void LoadNextlevel(int levelIndex)
+    {
+        if (levelIndex + 1 <= PlayerPrefs.GetInt("UnlockedLevels") && levelIndex + 1 < levelCount)
+        {
+            StartCoroutine(LoadingDelay(levelIndex + 1));
+        }
+        if(levelIndex == levelCount - 1)
+        {
+            // On completion of final level load level 1, buildindex 0.
+            StartCoroutine(LoadingDelay(0));
+        }
+    }
 
     private bool IsPreviousLevelCompleted(int levelIndex)
     {
@@ -99,5 +114,8 @@ public class GameManager : MonoBehaviour
         return PlayerPrefs.GetInt("Level_" + (levelIndex - 1), 0) == 1;
     }
 
-  
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 }
