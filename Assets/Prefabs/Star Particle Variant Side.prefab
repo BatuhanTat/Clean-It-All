@@ -9,6 +9,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3563868935024873157, guid: 0c90e3bec7dfee5439cbf15d2e87c10e,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563868935024873157, guid: 0c90e3bec7dfee5439cbf15d2e87c10e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563868935024873157, guid: 0c90e3bec7dfee5439cbf15d2e87c10e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563868935024873157, guid: 0c90e3bec7dfee5439cbf15d2e87c10e,
+        type: 3}
       propertyPath: m_LocalPosition.z
       value: 88.2
       objectReference: {fileID: 0}
@@ -22,10 +37,20 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -21.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3563868935024873157, guid: 0c90e3bec7dfee5439cbf15d2e87c10e,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4972032752031836068, guid: 0c90e3bec7dfee5439cbf15d2e87c10e,
         type: 3}
       propertyPath: lengthInSec
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972032752031836068, guid: 0c90e3bec7dfee5439cbf15d2e87c10e,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4972032752031836068, guid: 0c90e3bec7dfee5439cbf15d2e87c10e,
         type: 3}
@@ -85,7 +110,7 @@ PrefabInstance:
     - target: {fileID: 4972032752031836068, guid: 0c90e3bec7dfee5439cbf15d2e87c10e,
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 2.5
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 4972032752031836068, guid: 0c90e3bec7dfee5439cbf15d2e87c10e,
         type: 3}
@@ -120,7 +145,7 @@ PrefabInstance:
     - target: {fileID: 4972032752031836068, guid: 0c90e3bec7dfee5439cbf15d2e87c10e,
         type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
-      value: 1.8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4972032752031836068, guid: 0c90e3bec7dfee5439cbf15d2e87c10e,
         type: 3}
