@@ -70,7 +70,7 @@ public class JoystickMover : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        Debug.Log("inputVector " + inputVector);
         if (inputVector != Vector2.zero)
         {
             Vector3 movement = new Vector3(inputVector.x, 0, inputVector.y).normalized;
@@ -94,6 +94,7 @@ public class JoystickMover : MonoBehaviour
                 rb.MoveRotation(finalRotation );
 
             }
+            Debug.Log("Moveposition " + newPosition);
             rb.MovePosition(newPosition);
         }
     }
@@ -103,7 +104,7 @@ public class JoystickMover : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         inputVector = context.ReadValue<Vector2>();
-        //Debug.Log("Move: " + inputVector);
+        Debug.Log("Move: " + inputVector);
         if (context.canceled)
         {
             //Debug.Log("Value: " + inputVector);
