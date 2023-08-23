@@ -18421,7 +18421,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622784088}
   m_LocalRotation: {x: 0.5350344, y: -0.012534602, z: -0.008322691, w: 0.8446963}
-  m_LocalPosition: {x: 2.56, y: 6.2, z: -7.44}
+  m_LocalPosition: {x: 2.57, y: 6.61, z: -7.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43538,6 +43538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelPanel: {fileID: 188649654}
+  ingameUI: {fileID: 0}
   buttonStateHandler: {fileID: 0}
   particleSystems: []
   topBarLevelText: {fileID: 0}
@@ -44137,7 +44138,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh55238
+  m_Name: pb_Mesh173142
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -45081,7 +45082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: a07b62d5530df094782a733b17999658,
+  m_Actions: {fileID: -944628639613478452, guid: cf266b579ddefe94189824a24bda5797,
     type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
@@ -45095,14 +45096,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 81c61f33-172a-4ed6-a103-4e9926764508
-    m_ActionName: Level 1/Select[/Mouse/leftButton,/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: de66b2aa-4015-4285-92d4-63f19373262e
-    m_ActionName: Level 2/Hold[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1715286397}
@@ -45119,10 +45112,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5c8e1dd7-145c-4321-9003-df94d5b0470c
     m_ActionName: Level 3/Move[/XInputControllerWindows/leftStick]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0f7a7b10-3d10-4efd-a441-b4f21986489d
-    m_ActionName: Camera/SelectCamera[/Mouse/leftButton,/Mouse/position]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 24fa125f-816d-4d06-bcf0-ef16b0bf2877
@@ -45180,7 +45169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfcf4b9e3e1628042ac46dbea5f19c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1.5
   max_X: 1.7
   min_X: 0.5
   max_Z: -4
@@ -48273,7 +48262,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh55302
+  m_Name: pb_Mesh173206
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

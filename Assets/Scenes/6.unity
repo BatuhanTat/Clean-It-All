@@ -1778,7 +1778,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh143922
+  m_Name: pb_Mesh119398
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3621,7 +3621,7 @@ GameObject:
   - component: {fileID: 336024728}
   - component: {fileID: 336024729}
   m_Layer: 0
-  m_Name: Parent
+  m_Name: Parent Hair Cleaner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3676,7 +3676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: a07b62d5530df094782a733b17999658,
+  m_Actions: {fileID: -944628639613478452, guid: cf266b579ddefe94189824a24bda5797,
     type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
@@ -3690,14 +3690,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 81c61f33-172a-4ed6-a103-4e9926764508
-    m_ActionName: Level 1/Select[/Mouse/leftButton,/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: de66b2aa-4015-4285-92d4-63f19373262e
-    m_ActionName: Level 2/Hold[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 336024725}
@@ -3714,10 +3706,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5c8e1dd7-145c-4321-9003-df94d5b0470c
     m_ActionName: Level 3/Move
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0f7a7b10-3d10-4efd-a441-b4f21986489d
-    m_ActionName: Camera/SelectCamera[/Mouse/leftButton,/Mouse/position]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 24fa125f-816d-4d06-bcf0-ef16b0bf2877
@@ -9156,7 +9144,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh144194
+  m_Name: pb_Mesh119670
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -25541,6 +25529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelPanel: {fileID: 188649654}
+  ingameUI: {fileID: 0}
   buttonStateHandler: {fileID: 0}
   particleSystems: []
   topBarLevelText: {fileID: 0}
@@ -33144,7 +33133,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh143946
+  m_Name: pb_Mesh119422
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
