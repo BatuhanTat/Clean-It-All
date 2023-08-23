@@ -15,6 +15,8 @@ public class PushObjectsAway : MonoBehaviour
     int totalObject_Count;
     int pushedObject_Count = 0;
 
+    private bool hasIncrementedLevel = false;
+
     private void Start()
     {
         //surroundingRigidbodies = GetComponentsInChildren<Rigidbody>();
@@ -77,6 +79,12 @@ public class PushObjectsAway : MonoBehaviour
         if (pushedObject_Count >= totalObject_Count)
         {
             Debug.Log("Level Completed");
+
+            if (!hasIncrementedLevel)
+            {
+                GameManager.instance.CompleteLevel();
+                hasIncrementedLevel = true;
+            }
         }
     }
 }
