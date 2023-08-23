@@ -14,7 +14,8 @@ public class Clean : MonoBehaviour
     [Space(2)]
     [SerializeField] private float dirtThreshold = 60;
 
-    //[SerializeField] private TextMeshProUGUI dirtText;
+    [Space(2)]
+    [SerializeField] private TextMeshProUGUI dirtText;
 
     private Texture2D _templateDirtMask;
     private float dirtAmountTotal;
@@ -85,7 +86,7 @@ public class Clean : MonoBehaviour
             Debug.Log("Inside ");
             Cleaning();
             remeaningDirt = Mathf.RoundToInt(GetDirtAmount() * 100f);
-            //dirtText.text = remeaningDirt + "%";
+            dirtText.text = remeaningDirt + "%";
 
             if (remeaningDirt <= dirtThreshold)
             {
