@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
-        levelCount = SceneManager.sceneCountInBuildSettings;
-        Debug.Log("Total number of scenes: " + levelCount);
+        levelCount = SceneManager.sceneCountInBuildSettings - 1;
+        Debug.Log("Total number of level scenes: " + levelCount);
 
         unlockedLevels = PlayerPrefs.GetInt("UnlockedLevels", 0); // Load the unlockedLevels value from PlayerPrefs
     }
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         UIManager.instance.UpdateRenderCamera();
-        UIManager.instance.UpdateLevelTexts(SceneManager.GetActiveScene().buildIndex + 1);
+        UIManager.instance.UpdateLevelTexts(SceneManager.GetActiveScene().buildIndex);
         UIManager.instance.ToggleIngameUI(true);
         UIManager.instance.ToggleLevelCompleteText(false);
     }
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
         if(levelIndex == levelCount - 1)
         {
             // On completion of final level load level 1, buildindex 0.
-            StartCoroutine(LoadingDelay(0));
+            StartCoroutine(LoadingDelay(1));
         }
     }
 

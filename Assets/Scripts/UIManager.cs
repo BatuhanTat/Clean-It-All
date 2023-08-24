@@ -45,12 +45,13 @@ public class UIManager : MonoBehaviour
     }
 
     public void SelectLevel(Button button)
-    {      
+    {
         GameManager.instance.LoadLevel(button.name);
         // Do something with the buttonName, such as printing it
         Debug.Log("Clicked button name: " + button.name);     
-        LevelPanel();
-        ToggleIngameUI(false);
+        //LevelPanel();
+        //ToggleIngameUI(false);
+        StartCoroutine(ToggleUIDelay(false));
     }
 
     public void PlayLevelCompleteParticles()
@@ -90,5 +91,12 @@ public class UIManager : MonoBehaviour
     public void ToggleLevelCompleteText(bool state)
     {
         completeLevelText.gameObject.SetActive(state);
+    }
+
+    private IEnumerator ToggleUIDelay(bool state)
+    {
+        yield return new WaitForSeconds(0.2f);
+        ToggleIngameUI(state);
+        LevelPanel();
     }
 }
