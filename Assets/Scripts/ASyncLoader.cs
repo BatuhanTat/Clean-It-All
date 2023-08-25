@@ -15,7 +15,7 @@ public class ASyncLoader : MonoBehaviour
     {
         if (!hasLoadingCalled)
         {
-            StartCoroutine(LoadLevelASync(1));
+            StartCoroutine(LoadLevelASync(PlayerPrefs.GetInt("LastPlayedLevel",1)));
             hasLoadingCalled = true;
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AreaTrigger : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class AreaTrigger : MonoBehaviour
     private List<Rigidbody> sandBalls = new List<Rigidbody>();
 
 
-    private bool hasIncrementedLevel = false;
+    private bool hasCompleted = false;
 
     private void Start()
     {
@@ -34,10 +35,10 @@ public class AreaTrigger : MonoBehaviour
         {
             if (sandBalls.Count <= 1)
             {
-                if (!hasIncrementedLevel)
+                if (!hasCompleted)
                 {
                     GameManager.instance.CompleteLevel();
-                    hasIncrementedLevel = true;
+                    hasCompleted = true;
                 }
             }
             else
@@ -47,9 +48,10 @@ public class AreaTrigger : MonoBehaviour
                 //Debug.Log("Ball exited.");
             }
         }
-        else if(objectName.StartsWith("Poop"))
+        else if(objectName.StartsWith("Poop") && !hasCompleted)
         {
             Debug.Log("Restart Level");
+            GameManager.instance.LoadLevel(SceneManager.GetActiveScene().name);
         }
     }
 }

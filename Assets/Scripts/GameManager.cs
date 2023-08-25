@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public bool canClean { get; set; } = false;
     public bool inMenu { get; set; } = false;
 
+    public int lastPlayedScene;
+
     private int unlockedLevels; // Initially, only the first level is unlocked
 
     float levelLoadDelay = 1f;
@@ -31,7 +33,8 @@ public class GameManager : MonoBehaviour
         levelCount = SceneManager.sceneCountInBuildSettings - 1;
         Debug.Log("Total number of level scenes: " + levelCount);
 
-        unlockedLevels = PlayerPrefs.GetInt("UnlockedLevels", 0); // Load the unlockedLevels value from PlayerPrefs
+        unlockedLevels = PlayerPrefs.GetInt("UnlockedLevels", 1); // Load the unlockedLevels value from PlayerPrefs
+        
     }
 
 
@@ -43,7 +46,7 @@ public class GameManager : MonoBehaviour
         if (levelIndex == unlockedLevels)
         {
             Debug.Log("Level Index " + levelIndex + "  unlockedLevels: " + unlockedLevels);
-            if (levelIndex == 0 || IsPreviousLevelCompleted(levelIndex))
+            if (levelIndex == 1 || IsPreviousLevelCompleted(levelIndex))
             {
                 Debug.Log("unlockedLevels " + unlockedLevels);
                 unlockedLevels++;
@@ -60,14 +63,6 @@ public class GameManager : MonoBehaviour
         UIManager.instance.ToggleIngameUI(false);
         UIManager.instance.ToggleLevelCompleteText(true);
     }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        UIManager.instance.UpdateRenderCamera();
-        UIManager.instance.UpdateLevelTexts(SceneManager.GetActiveScene().buildIndex);
-        UIManager.instance.ToggleIngameUI(true);
-        UIManager.instance.ToggleLevelCompleteText(false);
-    }
     public void LoadLevel(string sceneName)
     {
         if (!string.IsNullOrEmpty(sceneName))
@@ -76,6 +71,18 @@ public class GameManager : MonoBehaviour
             StartCoroutine(LoadingDelay(sceneName));
         }
     }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        UIManager.instance.UpdateRenderCamera();
+        UIManager.instance.UpdateLevelTexts(SceneManager.GetActiveScene().buildIndex);
+        UIManager.instance.ToggleIngameUI(true);
+        UIManager.instance.ToggleLevelCompleteText(false);
+
+        PlayerPrefs.SetInt("LastPlayedLevel", SceneManager.GetActiveScene().buildIndex);
+        PlayerPrefs.Save(); // Optional: Manually save PlayerPrefs
+    }
+    
 
     private IEnumerator LoadingDelay(object arg)
     {
@@ -93,13 +100,14 @@ public class GameManager : MonoBehaviour
 
     private void LoadNextlevel(int levelIndex)
     {
-        if (levelIndex + 1 <= PlayerPrefs.GetInt("UnlockedLevels") && levelIndex + 1 < levelCount)
+        if (levelIndex + 1 <= PlayerPrefs.GetInt("UnlockedLevels") && levelIndex + 1 <= levelCount)
         {
             StartCoroutine(LoadingDelay(levelIndex + 1));
         }
-        if(levelIndex == levelCount - 1)
+        //if(levelIndex > levelCount)
+        else
         {
-            // On completion of final level load level 1, buildindex 0.
+            // On completion of final level load level 1, buildindex 1.
             StartCoroutine(LoadingDelay(1));
         }
     }

@@ -17,7 +17,9 @@ public class UIManager : MonoBehaviour
     [Space]
     [SerializeField] TextMeshProUGUI topBarLevelText;
     [SerializeField] TextMeshProUGUI completeLevelText;
-
+    [SerializeField] Image soundImage;
+   
+    private AudioSource audioSource;
     private GameObject UICamera;
 
     private void Awake()
@@ -31,17 +33,30 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void LevelPanel()
     {
         levelPanel.SetActive(!levelPanel.activeSelf);
-        buttonStateHandler.SetLevelButtons(PlayerPrefs.GetInt("UnlockedLevels"));
+        buttonStateHandler.SetLevelButtons(PlayerPrefs.GetInt("UnlockedLevels", 1));
         GameManager.instance.inMenu = levelPanel.activeSelf;
     }
 
-    public void SettingsPanel()
+    //public void SettingsPanel()
+    //{
+    //    Debug.Log("Settings worked");
+    //    PlayLevelCompleteParticles();
+    //}
+    public void ToggleBGMusic()
     {
-        Debug.Log("Settings worked");
-        PlayLevelCompleteParticles();
+        Debug.Log("togglebgmusic");
+        audioSource.mute = !audioSource.mute;
+        var tempColor = soundImage.color;
+        tempColor.a = audioSource.mute == true ? 0.2f : 1.0f;
+        soundImage.color = tempColor;
     }
 
     public void SelectLevel(Button button)

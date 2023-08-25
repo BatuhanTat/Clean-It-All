@@ -9,16 +9,16 @@ public class ButtonStateHandler : MonoBehaviour
     
     public void SetLevelButtons(int levelProgress)
     {
-        CheckScore(levelProgress);
+        CheckProgress(levelProgress);
         SetObjectsAlpha();
     }
 
-    private void CheckScore(int levelProgress)
+    private void CheckProgress(int levelProgress)
     {
         // levelProgress variable starts from 0.
         for (int i = 0; i < buttonList.Count; i++)
         {
-            if(i <= levelProgress)
+            if(i < levelProgress)
             {
                 buttonList[i].interactable = true;
             }
