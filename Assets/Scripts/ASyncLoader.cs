@@ -11,17 +11,22 @@ public class ASyncLoader : MonoBehaviour
 
     private bool hasLoadingCalled = false;
 
-    private void Update()
+    private void Start()
     {
-        if (!hasLoadingCalled)
-        {
-            StartCoroutine(LoadLevelASync(PlayerPrefs.GetInt("LastPlayedLevel",1)));
-            hasLoadingCalled = true;
-        }
+        StartCoroutine(LoadLevelASync(PlayerPrefs.GetInt("LastPlayedLevel", 1)));
     }
+    //private void Update()
+    //{
+    //    if (!hasLoadingCalled)
+    //    {
+    //        StartCoroutine(LoadLevelASync(PlayerPrefs.GetInt("LastPlayedLevel",1)));
+    //        hasLoadingCalled = true;
+    //    }
+    //}
 
     IEnumerator LoadLevelASync(int levelToLoad)
     {
+        yield return new WaitForSeconds(0.02f);
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(levelToLoad);
 
         while(!loadOperation.isDone)
