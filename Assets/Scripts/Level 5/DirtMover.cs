@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DirtMover : MonoBehaviour
 {
+    [SerializeField] bool doRotate = false;
     public Transform initialLocation;
     public Transform targetLocation;
     public float moveSpeed = 5f;

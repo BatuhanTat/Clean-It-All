@@ -8,14 +8,14 @@ public class TargetMover : MonoBehaviour
     [SerializeField] float positionThreshold = 0.1f;
     [SerializeField] float rotationThreshold = 1.0f;
     [SerializeField] Transform defaultTransform;
-
+    public bool doMove = true;
 
     private Transform targetTransform;
 
     private Vector3 targetPosition;
     private Quaternion targetRotation;
 
-    bool moveCamera = true;
+    
 
     private void Start()
     {
@@ -33,7 +33,7 @@ public class TargetMover : MonoBehaviour
 
     private void Update()
     {
-        if (moveCamera)
+        if (doMove)
         {
             MoveTowardsTarget();
         }
@@ -56,8 +56,7 @@ public class TargetMover : MonoBehaviour
         }
         else
         {
-            //GameManager.instance.canClean = true;
-            moveCamera = false;
+            doMove = false;
         }
     }
 
