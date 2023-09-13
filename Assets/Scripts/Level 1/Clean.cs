@@ -98,12 +98,12 @@ public class Clean : MonoBehaviour
                     // Win Condition
                     Debug.Log("Level Completed");
 
-                    if(!hasIncrementedLevel)
+                    if (!hasIncrementedLevel)
                     {
                         GameManager.instance.CompleteLevel();
-                        hasIncrementedLevel = true; 
+                        hasIncrementedLevel = true;
                     }
-                    
+
                 }
             }
         }

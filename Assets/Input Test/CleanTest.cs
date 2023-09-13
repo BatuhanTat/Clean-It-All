@@ -5,24 +5,32 @@ using UnityEngine.InputSystem;
 
 public class CleanTest : MonoBehaviour
 {
+    [SerializeField] DisableDirtMaterial disableDirtMaterial;
     [Header("Cleaning")]
     [SerializeField] private Texture2D _dirtMaskBase;
     [SerializeField] private Texture2D _brush;
     [SerializeField] private float brushSizeMultiplier = 2;
     [SerializeField] private Material _material;
+    [Space(2)]
+    [SerializeField] private float dirtThreshold = 70;
 
     private Texture2D _templateDirtMask;
     private float dirtAmountTotal;
     private float dirtAmount;
+    private int remeaningDirt;
     private Vector2Int lastPaintPixelPosition;
 
-
+    private DirtFading dirtFading;
     Vector2 cubePosition;
+
+    private bool hasIncrementedLevel = false;
 
     private void Start()
     {
         CreateTexture();
         SetBrushSize();
+
+        dirtFading = GetComponent<DirtFading>();
         // Get the Renderer component attached to the GameObject
         Renderer renderer = GetComponent<Renderer>();
         dirtAmountTotal = 0f;
@@ -69,8 +77,37 @@ public class CleanTest : MonoBehaviour
     private void Update()
     {
 
-        Cleaning();
+        //Cleaning();
 
+
+        if (!GameManager.instance.inMenu)
+        {
+            Debug.Log("Inside ");
+            Cleaning();
+            remeaningDirt = Mathf.RoundToInt(GetDirtAmount() * 100f);
+            Debug.Log("remeaning dirt amount: " + remeaningDirt);
+            if (remeaningDirt <= dirtThreshold)
+            {
+                Debug.Log("Dirst mask should be fading");
+                // Call the StartLerping function
+                if (dirtFading != null)
+                {
+                    dirtFading.StartLerping();
+                    // Win Condition
+                    Debug.Log("Level Completed");
+                    if (disableDirtMaterial != null)
+                    {
+                        disableDirtMaterial.DisableDirtEffect(0.0f);
+                    }
+                    //if (!hasIncrementedLevel)
+                    //{
+                    //    GameManager.instance.CompleteLevel();
+                    //    hasIncrementedLevel = true;
+                    //}
+
+                }
+            }
+        }
     }
 
     private void Cleaning()
@@ -148,5 +185,10 @@ public class CleanTest : MonoBehaviour
         _templateDirtMask.SetPixels(_dirtMaskBase.GetPixels());
         _templateDirtMask.Apply();
         _material.SetTexture("_DirtMask", _templateDirtMask);
+    }
+
+    private float GetDirtAmount()
+    {
+        return this.dirtAmount / dirtAmountTotal;
     }
 }

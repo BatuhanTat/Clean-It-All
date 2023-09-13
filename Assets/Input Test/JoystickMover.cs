@@ -85,8 +85,7 @@ public class JoystickMover : MonoBehaviour
             if (isVertical)
             {
                 targetRotation = Quaternion.Euler(90f, 90f, 0f);
-            }
-          
+            }          
 
             if (isRotate)
             {
