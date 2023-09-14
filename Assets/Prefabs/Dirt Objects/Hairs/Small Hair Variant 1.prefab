@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 7608813230303093689, guid: 40266c2ebcef9ea4bb56caa395dad508,
         type: 3}
       propertyPath: m_Name
-      value: Small Hair Variant
+      value: Small Hair Variant 1
       objectReference: {fileID: 0}
     - target: {fileID: 7608813230303093690, guid: 40266c2ebcef9ea4bb56caa395dad508,
         type: 3}
@@ -22,6 +22,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7608813230303093692, guid: 40266c2ebcef9ea4bb56caa395dad508,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18574c22f73037d42beea64eb997e6eb, type: 2}
     - target: {fileID: 7608813230303093693, guid: 40266c2ebcef9ea4bb56caa395dad508,
         type: 3}
       propertyPath: m_Mesh

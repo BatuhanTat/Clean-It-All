@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,13 +15,16 @@ public class TargetMover : MonoBehaviour
 
     private Vector3 targetPosition;
     private Quaternion targetRotation;
+    private Vector3 initialPosition;
+    private Quaternion initialRotation;
 
-    
 
     private void Start()
     {
         if (defaultTransform != null)
         {
+            initialPosition = transform.position;
+            initialRotation = transform.rotation;
             targetPosition = defaultTransform.position;
             targetRotation = defaultTransform.rotation;
         }
@@ -58,6 +62,22 @@ public class TargetMover : MonoBehaviour
         {
             doMove = false;
         }
+    }
+
+    public void BacktoInitialPosition(float waitSeconds)
+    {
+        StartCoroutine(DelayedReset(waitSeconds));
+    }
+
+    private IEnumerator DelayedReset(float waitSeconds)
+    {
+        Debug.Log("Back to InitialPosition - Delayed");
+        yield return new WaitForSeconds(waitSeconds);
+
+        // Reset the target position and rotation to the initial values
+        targetPosition = initialPosition;
+        targetRotation = initialRotation;
+        doMove = true;
     }
 
     /*   public void OnSelectCamera(InputValue value)

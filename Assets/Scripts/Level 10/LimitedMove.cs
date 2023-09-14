@@ -9,6 +9,7 @@ public class LimitedMove : MonoBehaviour
     [SerializeField] Vector3 defaultPosition;
 
     [Space]
+    [Header("Target, dirty object to be cleaned")]
     [SerializeField] Transform startPosition_Target;
     [SerializeField] Transform endPosition_Target;
     [SerializeField] TargetMover targetMover;
@@ -28,6 +29,7 @@ public class LimitedMove : MonoBehaviour
     {
         if (!targetMover.doMove && !canMove)
         {
+            Debug.Log("Limited mover first if ");
             startPosition = startPosition_Target.position;
             endPosition = endPosition_Target.position;
             canMove = true;
@@ -66,6 +68,16 @@ public class LimitedMove : MonoBehaviour
         {
             //Debug.Log("Value: " + inputVector);
         }
+    }
+
+    public void UpdateTargetObject(GameObject targetObject)
+    {
+        startPosition_Target = targetObject.transform.Find("Start Point");
+        endPosition_Target = targetObject.transform.Find("End Point");
+        canMove = false;
+        Debug.Log("startPosition: " + startPosition);
+        Debug.Log("endPosition: " + endPosition);
+        targetMover = targetObject.GetComponent<TargetMover>();
     }
 
     //private void PrintStuff()
