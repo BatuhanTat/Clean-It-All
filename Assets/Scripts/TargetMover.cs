@@ -71,7 +71,7 @@ public class TargetMover : MonoBehaviour
 
     private IEnumerator DelayedReset(float waitSeconds)
     {
-        Debug.Log("Back to InitialPosition - Delayed");
+        //Debug.Log("Back to InitialPosition - Delayed");
         yield return new WaitForSeconds(waitSeconds);
 
         // Reset the target position and rotation to the initial values

@@ -29,7 +29,6 @@ public class LimitedMove : MonoBehaviour
     {
         if (!targetMover.doMove && !canMove)
         {
-            Debug.Log("Limited mover first if ");
             startPosition = startPosition_Target.position;
             endPosition = endPosition_Target.position;
             canMove = true;
@@ -38,6 +37,7 @@ public class LimitedMove : MonoBehaviour
         if (inputVector != Vector2.zero && canMove)
         {
             Vector3 movement = new Vector3(inputVector.x, 0, inputVector.y).normalized;
+
             // Scale the movement vector based on the input vector's magnitude
             movement *= inputVector.magnitude;
 
@@ -75,8 +75,6 @@ public class LimitedMove : MonoBehaviour
         startPosition_Target = targetObject.transform.Find("Start Point");
         endPosition_Target = targetObject.transform.Find("End Point");
         canMove = false;
-        Debug.Log("startPosition: " + startPosition);
-        Debug.Log("endPosition: " + endPosition);
         targetMover = targetObject.GetComponent<TargetMover>();
     }
 

@@ -25,19 +25,20 @@ public class EarCleaner : MonoBehaviour
 
     public void IncreaseCleanedObjects()
     {
-        dirtyObjects[cleanedObjects].GetComponent<TargetMover>().BacktoInitialPosition(1.0f);
+        dirtyObjects[cleanedObjects].GetComponentInChildren<VFX_Handler>().PlayEffect();
+        dirtyObjects[cleanedObjects].GetComponent<TargetMover>().BacktoInitialPosition(0.6f);
         cleanedObjects++;
         if (cleanedObjects >= dirtyObjects.Count)
         {
-            //GameManager.instance.CompleteLevel();
+            GameManager.instance.CompleteLevel();
+
             Debug.Log("GameManager complete");
         }
 
         else if (dirtyObjects[cleanedObjects] != null)
         {
-            Debug.Log("IncreaseCleanedObjects else if");
             limitedMove.UpdateTargetObject(dirtyObjects[cleanedObjects]);
-            Debug.Log(dirtyObjects[cleanedObjects]);
+            //Debug.Log(dirtyObjects[cleanedObjects]);
 
             dirtyObjects[cleanedObjects].GetComponent<TargetMover>().doMove = true;
 

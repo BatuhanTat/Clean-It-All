@@ -99,11 +99,11 @@ public class CleanTest : MonoBehaviour
                     {
                         disableDirtMaterial.DisableDirtEffect(0.0f);
                     }
-                    //if (!hasIncrementedLevel)
-                    //{
-                    //    GameManager.instance.CompleteLevel();
-                    //    hasIncrementedLevel = true;
-                    //}
+                    if (!hasIncrementedLevel)
+                    {
+                        GameManager.instance.CompleteLevel();
+                        hasIncrementedLevel = true;
+                    }
 
                 }
             }
